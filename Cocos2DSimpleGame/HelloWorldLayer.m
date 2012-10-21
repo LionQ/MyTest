@@ -34,76 +34,55 @@
 	return scene;
 }
 
+-(void) spriteMoveFinished:(id) sender
+{
+    CCSprite *sprite =  (CCSprite *) sender;
+    [self removeChild:sprite cleanup:YES];
+}
+-(void)addTarget
+{
+
+    CCSprite * target = [CCSprite spriteWithFile:@"Target.png" rect:CGRectMake(0, 0, 27, 40)];
+    //determine where to spawn the target along the Y axis.
+    CGSize size =[[CCDirector sharedDirector]winSize];
+    int minY = target.contentSize.height/2;
+    int maxY = size.height -target.contentSize.height/2;
+    int actualY = (arc4random()%(maxY-minY))+minY;
+    
+    //create the target slightly off-screen along the right edge. and along a //random position along the y axis as calculated above.
+    target.position = ccp(size.width+(target.contentSize.width/2),actualY);
+    [self addChild:target];
+    
+    //Determine the speed of the target.
+    int minDuration = 2.0;
+    int maxDuration = 4.0;
+    int actualDuration = (arc4random()%(maxDuration -minDuration))+minDuration;
+    
+    //Create the action
+    id actionMove = [CCMoveTo actionWithDuration:actualDuration position:ccp(-target.contentSize.width/2,actualY)];
+    id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(spriteMoveFinished:)];
+    [target runAction:[CCSequence actions:actionMove,actionMoveDone,nil]];
+    
+}
+-(void) gameLogic:(ccTime)dt
+{
+    [self addTarget];
+}
+
 // on "init" you need to initialize your instance
 -(id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super's" return value
-	if( (self=[super init]) ) {
-		
-		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-
-		// ask director for the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-	
-		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
-		
-		// add the label as a child to this Layer
-		[self addChild: label];
-		
-		
-		
-		//
-		// Leaderboards and Achievements
-		//
-		
-		// Default font size will be 28 points.
-		[CCMenuItemFont setFontSize:28];
-		
-		// Achievement Menu Item using blocks
-		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
-			
-			
-			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
-			achivementViewController.achievementDelegate = self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:achivementViewController animated:YES];
-			
-			[achivementViewController release];
-		}
-									   ];
-
-		// Leaderboard Menu Item using blocks
-		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
-			
-			
-			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
-			leaderboardViewController.leaderboardDelegate = self;
-			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
-			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
-			
-			[leaderboardViewController release];
-		}
-									   ];
-		
-		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
-		
-		[menu alignItemsHorizontallyWithPadding:20];
-		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
-		
-		// Add the menu to the layer
-		[self addChild:menu];
-
-	}
-	return self;
+    if (self=[super initWithColor:ccc4(255, 255, 255, 255)])
+    {
+        CGSize size =[[CCDirector sharedDirector]winSize];
+        CCSprite *player = [CCSprite spriteWithFile:@"Player.png" rect:CGRectMake(0, 0, 27, 40)];
+        player.position = ccp(player.contentSize.width/2, size.height/2);
+        [self addChild:player];
+        //call gameLogic about every second.
+        [self schedule:@selector(gameLogic:) interval:1.0];
+    }
+    return self;
 }
-
 // on "dealloc" you need to release all your retained objects
 - (void) dealloc
 {

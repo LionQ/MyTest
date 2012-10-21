@@ -133,6 +133,9 @@
 		DDA6EA74162D9A3C00A34B28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA6EA73162D9A3C00A34B28 /* AppDelegate.m */; };
 		DDA6EA77162D9A3C00A34B28 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA6EA76162D9A3C00A34B28 /* HelloWorldLayer.m */; };
 		DDA6EA7A162D9A3C00A34B28 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA6EA79162D9A3C00A34B28 /* IntroLayer.m */; };
+		DDA6EA81162D9BA600A34B28 /* Target.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA6EA80162D9BA600A34B28 /* Target.png */; };
+		DDA6EA83162D9BAB00A34B28 /* Player.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA6EA82162D9BAB00A34B28 /* Player.png */; };
+		DDA6EA85162D9BB900A34B28 /* Projectile.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA6EA84162D9BB900A34B28 /* Projectile.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -398,6 +401,9 @@
 		DDA6EA76162D9A3C00A34B28 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		DDA6EA78162D9A3C00A34B28 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		DDA6EA79162D9A3C00A34B28 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
+		DDA6EA80162D9BA600A34B28 /* Target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Target.png; sourceTree = "<group>"; };
+		DDA6EA82162D9BAB00A34B28 /* Player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Player.png; sourceTree = "<group>"; };
+		DDA6EA84162D9BB900A34B28 /* Projectile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Projectile.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,6 +478,9 @@
 		DDA6E8FB162D9A3A00A34B28 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DDA6EA84162D9BB900A34B28 /* Projectile.png */,
+				DDA6EA82162D9BAB00A34B28 /* Player.png */,
+				DDA6EA80162D9BA600A34B28 /* Target.png */,
 				DDA6E8FC162D9A3A00A34B28 /* Default.png */,
 				DDA6E8FE162D9A3A00A34B28 /* Default-Landscape~ipad.png */,
 				DDA6E900162D9A3A00A34B28 /* fps_images.png */,
@@ -895,6 +904,9 @@
 				DDA6E911162D9A3A00A34B28 /* Icon@2x.png in Resources */,
 				DDA6E914162D9A3A00A34B28 /* iTunesArtwork in Resources */,
 				DDA6EA52162D9A3B00A34B28 /* ChangeLog in Resources */,
+				DDA6EA81162D9BA600A34B28 /* Target.png in Resources */,
+				DDA6EA83162D9BAB00A34B28 /* Player.png in Resources */,
+				DDA6EA85162D9BB900A34B28 /* Projectile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
